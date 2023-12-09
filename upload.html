@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Data Uploads</title>
+  <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo"></div>
+    <nav>
+        <a href="home.html" id="home">Home</a>
+    </nav>
+
+<nav id="student">
+    <ul>
+        <li><a href="student.html">Student Profile</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="#">Admin Data</a></li>
+        <li><a href="upload.html">Document Management</a></li>
+    </ul>
+</nav>
+</header>
+
+<section>
+  <h2>Upload Student Records</h2>
+  <label for="studentFile">Choose a CSV file:</label>
+  <input type="file" id="studentFile">
+  <button onclick="uploadData('studentFile', 'students')">Upload</button>
+
+  <h2>Upload Department Details</h2>
+  <label for="departmentFile">Choose a CSV file:</label>
+  <input type="file" id="departmentFile">
+  <button onclick="uploadData('departmentFile', 'departments')">Upload</button>
+
+  <h2>Upload Placement Results</h2>
+  <label for="placementFile">Choose a CSV file:</label>
+  <input type="file" id="placementFile">
+  <button onclick="uploadData('placementFile', 'placements')">Upload</button>
+</section>
+
+<script>
+  function uploadData(fileInputId, dataType) {
+    var fileInput = document.getElementById(fileInputId);
+    var file = fileInput.files[0];
+
+    if (file) {
+      var formData = new FormData();
+      formData.append('file', file);
+
+      console.log(`Uploading ${dataType} data:`, formData);
+
+      // Reset the file input
+      fileInput.value = '';
+    } else {
+      alert('Please choose a file to upload.');
+    }
+  }
+</script>
+
+</body>
+</html>

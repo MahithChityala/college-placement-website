@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordinator Analytics Dashboard</title>
+  <link rel="stylesheet" href="analytics.css">
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo"></div>
+    <nav>
+        <a href="home.html" id="home">Home</a>
+    </nav>
+
+<nav id="student">
+    <ul>
+        <li><a href="student.html">Student Profile</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="#">Admin Data</a></li>
+        <li><a href="upload.html">Document Management</a></li>
+    </ul>
+</nav>
+</header>
+
+<section>
+  <h2>Placement Statistics</h2>
+  <canvas id="placementChart"></canvas>
+
+  <h2>Trends and Insights</h2>
+  <canvas id="trendsChart"></canvas>
+</section>
+
+<script>
+  // Sample data for charts
+  var placementData = {
+    labels: ['2020', '2021', '2022', '2023'],
+    datasets: [{
+      label: 'Placement Statistics',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+      data: [50, 75, 90, 80]
+    }]
+  };
+
+  var trendsData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [{
+      label: 'Trends and Insights',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
+      data: [10, 20, 30, 25, 40, 35]
+    }]
+  };
+
+  // Placement Chart
+  var ctxPlacement = document.getElementById('placementChart').getContext('2d');
+  var placementChart = new Chart(ctxPlacement, {
+    type: 'line',
+    data: placementData
+  });
+
+  // Trends Chart
+  var ctxTrends = document.getElementById('trendsChart').getContext('2d');
+  var trendsChart = new Chart(ctxTrends, {
+    type: 'bar',
+    data: trendsData
+  });
+</script>
+
+</body>
+</html>
